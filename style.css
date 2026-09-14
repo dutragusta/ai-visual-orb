@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5f7ff;
+  background: #030610;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: #030610; }
+button { font: inherit; }
+
+#app { position: relative; isolation: isolate; }
+#scene { position: absolute; inset: 0; }
+#scene canvas { display: block; width: 100%; height: 100%; }
+
+#app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 22%, rgba(2, 5, 15, .18) 62%, rgba(2, 4, 12, .72) 100%);
+  z-index: 1;
+}
+
+.topbar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  pointer-events: none;
+}
+
+.brand { display: flex; gap: 10px; align-items: center; text-transform: uppercase; letter-spacing: .12em; }
+.brand-mark { width: 9px; height: 9px; border-radius: 50%; background: #ffae3d; box-shadow: 0 0 18px #ff8c24; }
+.brand strong { display: block; font-size: 10px; }
+.brand small { display: block; margin-top: 3px; color: rgba(255,255,255,.45); font-size: 8px; letter-spacing: .18em; }
+
+.status { display: flex; align-items: center; gap: 8px; padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; background: rgba(5,8,22,.45); backdrop-filter: blur(12px); color: rgba(255,255,255,.6); font-size: 10px; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #6c7890; box-shadow: 0 0 10px transparent; transition: .3s; }
+.status[data-state="listening"] .status-dot { background: #65e6ff; box-shadow: 0 0 12px #65e6ff; }
+.status[data-state="thinking"] .status-dot { background: #ffad48; box-shadow: 0 0 12px #ffad48; }
+.status[data-state="speaking"] .status-dot { background: #ff73d5; box-shadow: 0 0 12px #ff73d5; }
+
+.hud { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 0 20px 34px; pointer-events: none; }
+.center-copy { position: absolute; top: 50%; left: 50%; width: min(680px, 85vw); transform: translate(-50%, -50%); text-align: center; text-shadow: 0 2px 20px rgba(0,0,0,.65); }
+.transcript { min-height: 1.3em; margin: 0; color: rgba(255,255,255,.72); font-size: clamp(13px, 2vw, 17px); transition: .25s; }
+.response { min-height: 1.3em; margin: 8px 0 0; color: #fff; font-size: clamp(18px, 3vw, 28px); font-weight: 600; }
+.controls { display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: auto; }
+.orb-button { width: 58px; height: 58px; border: 1px solid rgba(255,190,90,.55); border-radius: 50%; color: #ffc36b; background: rgba(255,166,56,.08); box-shadow: 0 0 30px rgba(255,150,35,.2), inset 0 0 22px rgba(255,150,35,.08); cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.orb-button:hover { transform: scale(1.06); box-shadow: 0 0 42px rgba(255,150,35,.35), inset 0 0 25px rgba(255,150,35,.12); }
+.orb-button:active { transform: scale(.96); }
+.mic-icon { font-size: 18px; }
+.text-button { border: 0; background: transparent; color: rgba(255,255,255,.5); cursor: pointer; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.text-button:hover { color: #fff; }
+.hint { margin-top: 14px; color: rgba(255,255,255,.28); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+
+@media (max-width: 600px) {
+  .topbar { padding: 16px; }
+  .status { padding: 7px 9px; }
+  .center-copy { top: 48%; }
+  .hud { padding-bottom: 24px; }
+}
