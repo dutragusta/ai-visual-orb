@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050816" />
+    <meta name="description" content="AI Visual Orb: uma interface visual 3D que reage à voz e aos estados de uma IA." />
+    <title>AI Visual Orb</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div>
+            <strong>AI VISUAL ORB</strong>
+            <small>neural interface</small>
+          </div>
+        </div>
+        <div id="status" class="status" data-state="idle">
+          <span class="status-dot"></span>
+          <span id="statusText">Aguardando</span>
+        </div>
+      </header>
+
+      <main class="hud">
+        <section class="center-copy" aria-live="polite">
+          <p id="transcript" class="transcript">Fale comigo</p>
+          <p id="response" class="response"></p>
+        </section>
+
+        <section class="controls" aria-label="Controles">
+          <button id="micButton" class="orb-button" type="button" aria-label="Ativar microfone">
+            <span class="mic-icon">◉</span>
+          </button>
+          <button id="demoButton" class="text-button" type="button">Modo demonstração</button>
+        </section>
+
+        <div class="hint">Microfone → partículas → voz</div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
